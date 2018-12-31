@@ -34,15 +34,6 @@ export class ChampionshipsService {
   }
 
   save(championship: any): Observable<any> {
-    if (championship.id) {
-      return this.http
-        .put(this.baseUrl + "/" + championship.id, championship)
-        .pipe(
-          map((response: Response) => {
-            return <any>response;
-          })
-        );
-    } else {
       return this.http
         .post(this.baseUrl, championship)
         .pipe(
@@ -50,6 +41,11 @@ export class ChampionshipsService {
             return <any>response;
           })
         );
-    }
   }
+
+  update(id: string, data: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${id}`, data);
+  }
+
+  
 }
