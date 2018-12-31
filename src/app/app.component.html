@@ -1,6 +1,13 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<nav>
-  <a routerLink="/championship" routerLinkActive="active">Add</a> <br />
-  <a routerLink="/championship-list" routerLinkActive="active">List</a>
-</nav>
-<router-outlet></router-outlet>
+<nav class="navbar navbar-dark bg-dark mb-5">
+    <a class="navbar-brand" href="/">Angular & Bootstrap</a>
+    <div class="navbar-expand mr-auto">
+      <div class="navbar-nav">
+        <a class="nav-item nav-link active" routerLink="/championship" routerLinkActive="active">Add</a>
+        <a class="nav-item nav-link" routerLink="/championship-list" routerLinkActive="active">List</a>
+      </div>
+    </div>
+  </nav>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

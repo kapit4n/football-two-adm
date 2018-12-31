@@ -10,14 +10,13 @@ export class ChampionshipComponent implements OnInit {
 
   constructor() { }
 
-  model = {name: "La liga", description: "Description"};
   cForm = new FormGroup({
     name: new FormControl(''),
     description: new FormControl('')
   });
 
   ngOnInit() {
-    
+
   }
 
   onSubmit() {
