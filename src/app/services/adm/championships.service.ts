@@ -47,5 +47,9 @@ export class ChampionshipsService {
     return this.http.put(`${this.baseUrl}/${id}`, data);
   }
 
+  delete(id: string): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${id}`);
+  }
+
   
 }
