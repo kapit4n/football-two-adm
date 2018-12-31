@@ -40,7 +40,7 @@ export class ChampionshipComponent implements OnInit {
       data = Object.assign(data);
       this.champSvc.update(this.id, data).subscribe( data => {
         console.log(data);
-        this.router.navigate(['/championship-list']);
+        this.router.navigate(['/championship-info/' + this.id]);
       });
     } else {
       this.champSvc.save(data).subscribe(data => {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ChampionshipsService } from '../../../services/adm/championships.service'
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-championship-list',
@@ -14,7 +15,17 @@ export class ChampionshipListComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.loadData();
+  }
+  
+  loadData() {
     this.champSvc.getAll().subscribe(data => this.championships = data)
+  }
+
+  delete(id: string) {
+    this.champSvc.delete(id).subscribe(data => {
+      this.loadData();
+    });
   }
 
 }
