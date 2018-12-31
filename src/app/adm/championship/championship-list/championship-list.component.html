@@ -6,12 +6,12 @@
     <td>
     </td>
   </tr>
-  <tr>
+  <tr *ngFor="let c of championships">
     <td>
-      La Liga
+      {{c.name}}
     </td>
     <td>
-      <a href="/championship">Edit</a>
+      <a href="/championship/{{c.id}}">Edit</a>
     </td>
   </tr>
 </table>
