@@ -27,7 +27,10 @@ export class ChampionshipsService {
   }
 
   getById(id: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`).pipe(map((response: Response) => { return <any>response}))
+    return this.http.get(`${this.baseUrl}/${id}`).pipe(map((response: Response) => {
+      return <any>response
+    }
+    ))
   }
 
   save(championship: any): Observable<any> {
