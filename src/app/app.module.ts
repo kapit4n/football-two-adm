@@ -9,10 +9,12 @@ import { AppComponent } from './app.component';
 import { ChampionshipComponent } from './adm/championship/championship/championship.component';
 
 import { ChampionshipListComponent } from './adm/championship/championship-list/championship-list.component';
-import { ChampionshipsService } from './services/adm/championships.service'
+import { ChampionshipsService } from './services/adm/championships.service';
+import { ChampionshipInfoComponent } from './adm/championship/championship-info/championship-info.component'
 
 const appRoutes: Routes = [
   { path: 'championship/:id', component: ChampionshipComponent },
+  { path: 'championship-info/:id', component: ChampionshipInfoComponent },
   { path: 'championship-list', component: ChampionshipListComponent }
 ];
 
@@ -20,7 +22,8 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     ChampionshipComponent,
-    ChampionshipListComponent
+    ChampionshipListComponent,
+    ChampionshipInfoComponent
   ],
   imports: [
     BrowserModule,

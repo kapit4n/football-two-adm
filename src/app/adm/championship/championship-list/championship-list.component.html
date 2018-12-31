@@ -11,8 +11,9 @@
       {{c.name}}
     </td>
     <td>
-      <a href="/championship/{{c.id}}">Edit</a>
-      <button (click)="delete(c.id)">Del</button>
+      <a class="btn btn-primary" href="/championship-info/{{c.id}}">Show</a>
+      <a class="btn btn-primary" href="/championship/{{c.id}}">Edit</a>
+      <button class="btn btn-primary" (click)="delete(c.id)">Del</button>
     </td>
   </tr>
 </table>
