@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ChampionshipsService } from '../../../services/adm/championships.service'
 
 @Component({
   selector: 'app-championship',
@@ -8,19 +9,24 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class ChampionshipComponent implements OnInit {
 
-  constructor() { }
+  constructor(private champSvc: ChampionshipsService) {
+    this.cForm = new FormGroup({
+      name: new FormControl(''),
+      description: new FormControl('')
+    });
+    this.champSvc.getById("1").subscribe(data => {
+      this.cForm.setValue(data);
+    })
+  }
 
-  cForm = new FormGroup({
-    name: new FormControl(''),
-    description: new FormControl('')
-  });
+  cForm: FormGroup;
 
   ngOnInit() {
 
   }
 
   onSubmit() {
-    console.log(this.cForm.value);
+    this.champSvc.save(this.cForm.value).subscribe(data => console.log(data));
   }
 
 }

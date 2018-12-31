@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ChampionshipsService } from '../../../services/adm/championships.service'
 
 @Component({
   selector: 'app-championship-list',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChampionshipListComponent implements OnInit {
 
-  constructor() { }
+  championships: Array<any>;
+  constructor(private champSvc: ChampionshipsService) {
+    this.championships = [];
+  }
 
   ngOnInit() {
+    this.champSvc.getAll().subscribe(data => this.championships = data)
   }
 
 }
