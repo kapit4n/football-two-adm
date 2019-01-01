@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from "@angular/router";
 import { ChampionshipsService } from '../../../services/adm/championships.service'
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-championship-info',
@@ -12,6 +13,7 @@ export class ChampionshipInfoComponent implements OnInit {
 
   id: string;
   data: any;
+  moment = moment;
   constructor(private champSvc: ChampionshipsService, private route: ActivatedRoute, private router: Router) {
     this.data = {};
   }
