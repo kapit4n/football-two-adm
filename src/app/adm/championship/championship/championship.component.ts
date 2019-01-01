@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { ChampionshipsService } from '../../../services/adm/championships.service'
 import { ActivatedRoute } from '@angular/router';
 import { Router } from "@angular/router";
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-championship',
@@ -15,6 +16,9 @@ export class ChampionshipComponent implements OnInit {
   constructor(private champSvc: ChampionshipsService, private route: ActivatedRoute, private router: Router) {
     this.cForm = new FormGroup({
       name: new FormControl(''),
+      banner: new FormControl(''),
+      startDate: new FormControl(''),
+      endDate: new FormControl(''),
       description: new FormControl('')
     });
   }
@@ -27,7 +31,7 @@ export class ChampionshipComponent implements OnInit {
     if (id != 'new') {
       this.id = id;
       this.champSvc.getById(id).subscribe(data => {
-        this.cForm.setValue({ name: data.name, description: data.description });
+        this.cForm.setValue({ name: data.name, description: data.description, startDate: moment(data.startDate).format('YYYY-MM-DD'), endDate: moment(data.endDate).format('YYYY-MM-DD'), banner: data.banner });
       })
     }
 
