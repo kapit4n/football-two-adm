@@ -10,12 +10,19 @@ import { ChampionshipComponent } from './adm/championship/championship/champions
 
 import { ChampionshipListComponent } from './adm/championship/championship-list/championship-list.component';
 import { ChampionshipsService } from './services/adm/championships.service';
-import { ChampionshipInfoComponent } from './adm/championship/championship-info/championship-info.component'
+import { ChampionshipInfoComponent } from './adm/championship/championship-info/championship-info.component';
+import { TeamEditComponent } from './adm/team/team-edit/team-edit.component';
+import { TeamComponent } from './adm/team/team/team.component';
+import { TeamListComponent } from './adm/team/team-list/team-list.component'
 
 const appRoutes: Routes = [
   { path: 'championship/:id', component: ChampionshipComponent },
   { path: 'championship-info/:id', component: ChampionshipInfoComponent },
-  { path: 'championship-list', component: ChampionshipListComponent }
+  { path: 'championship-list', component: ChampionshipListComponent },
+  { path: 'team/:id', component: TeamEditComponent },
+  { path: 'team-info/:id', component: TeamComponent },
+  { path: 'team-list', component: TeamListComponent }
+  
 ];
 
 @NgModule({
@@ -23,7 +30,10 @@ const appRoutes: Routes = [
     AppComponent,
     ChampionshipComponent,
     ChampionshipListComponent,
-    ChampionshipInfoComponent
+    ChampionshipInfoComponent,
+    TeamEditComponent,
+    TeamComponent,
+    TeamListComponent
   ],
   imports: [
     BrowserModule,

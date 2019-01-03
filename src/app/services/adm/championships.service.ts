@@ -3,53 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './config.service'
 import 'rxjs'; //get everything from Rx    
 
-import { Observable, Subject, of, config } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
+import { CrudService } from './crud.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ChampionshipsService {
-
-  baseUrl: string;
-  constructor(private http: HttpClient, private confSvc: ConfigService) {
+export class ChampionshipsService extends CrudService{
+  constructor(public http: HttpClient, public confSvc: ConfigService) {
+    super(http, confSvc);
     this.baseUrl = this.confSvc.baseUrl + '/' + this.confSvc.championshipUrl;
   }
-
-  getAll(): Observable<any> {
-    return this.http
-      .get(this.baseUrl)
-      .pipe(
-        map((response: Response) => {
-          return <any>response;
-        })
-      );
-  }
-
-  getById(id: string): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`).pipe(map((response: Response) => {
-      return <any>response
-    }
-    ))
-  }
-
-  save(championship: any): Observable<any> {
-      return this.http
-        .post(this.baseUrl, championship)
-        .pipe(
-          map((response: Response) => {
-            return <any>response;
-          })
-        );
-  }
-
-  update(id: string, data: any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, data);
-  }
-
-  delete(id: string): Observable<any> {
-    return this.http.delete(`${this.baseUrl}/${id}`);
-  }
-
-  
 }
