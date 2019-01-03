@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from "@angular/router";
+import { TeamsService } from '../../../services/adm/teams.service'
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-team',
@@ -7,9 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamComponent implements OnInit {
 
-  constructor() { }
+  id: string;
+  data: any;
+  startDateLabel = "";
+  endDateLabel = "";
+  moment = moment;
+  constructor(private teamsSvc: TeamsService, private route: ActivatedRoute, private router: Router) {
+    this.data = {};
+  }
 
   ngOnInit() {
+    let id = this.route.snapshot.paramMap.get("id");
+    if (id) {
+      this.id = id;
+      this.teamsSvc.getById(id).subscribe(data => {
+        this.data = data;
+      })
+    }
   }
 
 }
