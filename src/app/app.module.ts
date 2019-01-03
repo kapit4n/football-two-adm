@@ -6,10 +6,11 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+import { ChampionshipsService } from './services/adm/championships.service';
+import { TeamsService } from './services/adm/teams.service';
 import { ChampionshipComponent } from './adm/championship/championship/championship.component';
 
 import { ChampionshipListComponent } from './adm/championship/championship-list/championship-list.component';
-import { ChampionshipsService } from './services/adm/championships.service';
 import { ChampionshipInfoComponent } from './adm/championship/championship-info/championship-info.component';
 import { TeamEditComponent } from './adm/team/team-edit/team-edit.component';
 import { TeamComponent } from './adm/team/team/team.component';
@@ -46,7 +47,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     NgbModule
   ],
-  providers: [ChampionshipsService],
+  providers: [ChampionshipsService, TeamsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,7 +8,7 @@ import { CrudService } from './crud.service';
 @Injectable({
   providedIn: 'root'
 })
-export class TeamsService extends CrudService{
+export class TeamsService extends CrudService {
 
   constructor(public http: HttpClient, public confSvc: ConfigService) {
     super(http, confSvc);

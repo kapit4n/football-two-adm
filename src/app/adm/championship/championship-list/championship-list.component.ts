@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ChampionshipsService } from '../../../services/adm/championships.service'
-import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-championship-list',

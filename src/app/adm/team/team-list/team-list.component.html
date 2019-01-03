@@ -1,3 +1,20 @@
-<p>
-  team-list works!
-</p>
+<a class="nav-item nav-link active" routerLink="/team/new" routerLinkActive="active">Add</a>
+<table class="table">
+  <tr>
+    <th>
+      Name
+    </th>
+    <td>
+    </td>
+  </tr>
+  <tr *ngFor="let c of teams">
+    <td>
+      {{c.name}}
+    </td>
+    <td>
+      <a class="btn btn-primary" href="/team-info/{{c.id}}">Show</a>
+      <a class="btn btn-primary" href="/team/{{c.id}}">Edit</a>
+      <button class="btn btn-primary" (click)="delete(c.id)">Del</button>
+    </td>
+  </tr>
+</table>

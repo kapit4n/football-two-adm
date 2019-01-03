@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamsService } from '../../../services/adm/teams.service'
 
 @Component({
   selector: 'app-team-list',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamListComponent implements OnInit {
 
-  constructor() { }
+  teams: Array<any>;
+  constructor(private teamsSvc: TeamsService) {
+    this.teams = [];
+  }
 
   ngOnInit() {
+    this.loadData();
+  }
+  
+  loadData() {
+    this.teamsSvc.getAll().subscribe(data => this.teams = data)
+  }
+
+  delete(id: string) {
+    this.teamsSvc.delete(id).subscribe(data => {
+      this.loadData();
+    });
   }
 
 }

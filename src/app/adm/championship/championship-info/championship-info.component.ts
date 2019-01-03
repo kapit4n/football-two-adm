@@ -18,8 +18,6 @@ export class ChampionshipInfoComponent implements OnInit {
   moment = moment;
   constructor(private champSvc: ChampionshipsService, private route: ActivatedRoute, private router: Router) {
     this.data = {};
-
-
   }
 
   ngOnInit() {
