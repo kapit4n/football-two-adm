@@ -23,7 +23,6 @@ const appRoutes: Routes = [
   { path: 'team/:id', component: TeamEditComponent },
   { path: 'team-info/:id', component: TeamComponent },
   { path: 'team-list', component: TeamListComponent }
-  
 ];
 
 @NgModule({
