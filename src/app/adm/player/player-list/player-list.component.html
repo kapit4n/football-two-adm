@@ -1,3 +1,20 @@
-<p>
-  player-list works!
-</p>
+<a class="nav-item nav-link active" routerLink="/player/new" routerLinkActive="active">Add</a>
+<table class="table">
+  <tr>
+    <th>
+      Name
+    </th>
+    <td>
+    </td>
+  </tr>
+  <tr *ngFor="let c of players">
+    <td>
+      {{c.name}}
+    </td>
+    <td>
+      <a class="btn btn-primary" href="/player-info/{{c.id}}">Show</a>
+      <a class="btn btn-primary" href="/player/{{c.id}}">Edit</a>
+      <button class="btn btn-primary" (click)="delete(c.id)">Del</button>
+    </td>
+  </tr>
+</table>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayersService } from '../../../services/adm/players.service'
 
 @Component({
   selector: 'app-player-list',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PlayerListComponent implements OnInit {
 
-  constructor() { }
+  players: Array<any>;
+  constructor(private playersSvc: PlayersService) {
+    this.players = [];
+  }
 
   ngOnInit() {
+    this.loadData();
+  }
+  
+  loadData() {
+    this.playersSvc.getAll().subscribe(data => this.players = data)
+  }
+
+  delete(id: string) {
+    this.playersSvc.delete(id).subscribe(data => {
+      this.loadData();
+    });
   }
 
 }
