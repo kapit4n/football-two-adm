@@ -3,8 +3,8 @@
   <div class="card-body">
     <h5 class="card-title">{{data.name}}</h5>
     <div>
-      <span>Start: {{moment(data.startDate).fromNow()}}</span>,
-      <span>End: {{moment(data.endDate).fromNow()}}</span>
+      <span>{{startDateLabel}}: {{moment(data.startDate).fromNow()}}</span>,
+      <span>{{endDateLabel}}: {{moment(data.endDate).fromNow()}}</span>
     </div>
     <p class="card-text">{{data.description}}</p>
     <a href="championship/{{id}}" class="btn btn-primary">Edit</a>
@@ -17,7 +17,7 @@
       </tr>
       <tr>
         <td>
-
+          
         </td>
       </tr>
     </table>

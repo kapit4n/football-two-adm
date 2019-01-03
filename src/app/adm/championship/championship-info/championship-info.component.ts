@@ -13,9 +13,24 @@ export class ChampionshipInfoComponent implements OnInit {
 
   id: string;
   data: any;
+  startDateLabel = "";
+  endDateLabel = "";
   moment = moment;
   constructor(private champSvc: ChampionshipsService, private route: ActivatedRoute, private router: Router) {
     this.data = {};
+    if (this.data.startDate > Date.now()) {
+      this.startDateLabel = "Start";
+    } else {
+      this.startDateLabel = "Started";
+    }
+
+    if (this.data.endDate > Date.now()) {
+      this.endDateLabel = "End";
+    } else {
+      this.endDateLabel = "Ended";
+    }
+
+
   }
 
   ngOnInit() {
