@@ -10,6 +10,8 @@ export class ConfigService {
   baseUrl = "http://localhost:3000/api";
   championshipUrl = "championships";
   teamUrl = "teams";
+  playerUrl = "teams";
+  matchUrl = "teams";
 
   constructor(private http: HttpClient) { }
   getConfig() {
