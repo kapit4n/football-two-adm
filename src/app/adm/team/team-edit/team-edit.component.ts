@@ -18,7 +18,7 @@ export class TeamEditComponent implements OnInit {
     this.cForm = new FormGroup({
       name: new FormControl(''),
       banner: new FormControl(''),
-      description: new FormControl('')
+      biography: new FormControl('')
     });
   }
 
@@ -27,7 +27,7 @@ export class TeamEditComponent implements OnInit {
     if (id != 'new') {
       this.id = id;
       this.teamsSvc.getById(id).subscribe(data => {
-        this.cForm.setValue({ name: data.name, description: data.description, banner: data.banner });
+        this.cForm.setValue({ name: data.name, biography: data.biography, banner: data.banner });
       })
     }
   }
