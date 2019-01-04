@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { MatchesService } from '../../../services/adm/matches.service'
 import { ActivatedRoute } from '@angular/router';
 import { Router } from "@angular/router";
+import { TeamsService } from '../../../services/adm/teams.service'
 
 @Component({
   selector: 'app-match-edit',
@@ -13,8 +14,9 @@ export class MatchEditComponent implements OnInit {
 
   id: string;
   cForm: FormGroup;
+  teams: Array<any>;
 
-  constructor(private matchesSvc: MatchesService, private route: ActivatedRoute, private router: Router) {
+  constructor(private matchesSvc: MatchesService, private teamssSvc: TeamsService, private route: ActivatedRoute, private router: Router) {
     this.cForm = new FormGroup({
       matchDate: new FormControl(''),
       visitId: new FormControl(''),
@@ -30,6 +32,7 @@ export class MatchEditComponent implements OnInit {
         this.cForm.setValue({ matchDate: data.matchDate, visitId: data.visitId, localId: data.localId });
       })
     }
+    this.teamssSvc.getAll().subscribe(data => this.teams = data);
   }
 
   onSubmit() {
