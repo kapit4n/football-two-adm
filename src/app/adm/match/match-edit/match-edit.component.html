@@ -5,14 +5,22 @@
   </div>
   
   <div class="form-group">
-    <label for="localId">Local</label>
-    <textarea class="form-control" id="localId" rows="3" formControlName="localId"></textarea>
-  </div>
+      <label for="localId">Local Team</label>
+      <select class="form-control" name="localId" formControlName="localId">
+        <option value="1">Barcelona</option>
+        <option value="2">Real Madrid</option>
+      </select>
+    </div>
+  
   
   <div class="form-group">
-    <label for="visitId">Visit</label>
-    <input type="text" class="form-control" id="visitId" formControlName="visitId" placeholder="">
-  </div>
-
+      <label for="visitId">Visit Team</label>
+      <select class="form-control" id="visitId" formControlName="visitId">
+        <option value="1">Barcelona</option>
+        <option value="2">Real Madrid</option>
+      </select>
+    </div>
+  
+  
   <button type="submit" class="btn btn-primary mb-2">Save</button>
 </form>
