@@ -8,6 +8,7 @@ import { map, filter, switchMap } from 'rxjs/operators';
 export class CrudService {
 
   public baseUrl: string;
+  public include: string;
   constructor(public http: HttpClient, public confSvc: ConfigService) { }
 
   getAll(): Observable<any> {
@@ -22,6 +23,13 @@ export class CrudService {
 
   getById(id: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`).pipe(map((response: Response) => {
+      return <any>response
+    }
+    ))
+  }
+
+  getByIdIncl(id: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${id}?${this.include}`).pipe(map((response: Response) => {
       return <any>response
     }
     ))
