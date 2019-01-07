@@ -27,14 +27,12 @@ export class ChampionshipComponent implements OnInit {
 
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get("id");
-    
     if (id != 'new') {
       this.id = id;
       this.champSvc.getById(id).subscribe(data => {
         this.cForm.setValue({ name: data.name, description: data.description, startDate: moment(data.startDate).format('YYYY-MM-DD'), endDate: moment(data.endDate).format('YYYY-MM-DD'), banner: data.banner });
       })
     }
-
   }
 
   onSubmit() {
