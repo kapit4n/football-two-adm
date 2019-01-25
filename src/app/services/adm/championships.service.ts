@@ -16,7 +16,7 @@ export class ChampionshipsService extends CrudService {
     super(http, confSvc);
     this.baseUrl = this.confSvc.baseUrl + '/' + this.confSvc.championshipUrl;
     this.chamTeamUrl = this.confSvc.baseUrl + "/" + "chamTeams"
-    this.include = 'filter[include]=teams';
+    this.include = '';
   }
 
   getChamTeams(cId: string): Observable<any> {
