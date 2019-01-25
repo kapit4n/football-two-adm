@@ -13,5 +13,6 @@ export class MatchesService extends CrudService {
   constructor(public http: HttpClient, public confSvc: ConfigService) {
     super(http, confSvc);
     this.baseUrl = this.confSvc.baseUrl + '/' + this.confSvc.matchUrl;
+    this.include = "filter[include]=visit&filter[include]=local"
   }
 }

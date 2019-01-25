@@ -21,6 +21,16 @@ export class CrudService {
       );
   }
 
+  getAllIncl(): Observable<any> {
+    return this.http
+      .get(`${this.baseUrl}?${this.include}`)
+      .pipe(
+        map((response: Response) => {
+          return <any>response;
+        })
+      );
+  }
+
   getById(id: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/${id}`).pipe(map((response: Response) => {
       return <any>response
