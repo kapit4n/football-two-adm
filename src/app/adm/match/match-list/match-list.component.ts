@@ -18,7 +18,7 @@ export class MatchListComponent implements OnInit {
   }
   
   loadData() {
-    this.matchesSvc.getAll().subscribe(data => this.matches = data)
+    this.matchesSvc.getAllIncl().subscribe(data => this.matches = data)
   }
 
   delete(id: string) {

@@ -2,12 +2,24 @@
 <table class="table">
   <tr>
     <th>
-      Name
+      Local
+    </th>
+    <th>
+      Visit
+    </th>
+    <th>
+      Date
     </th>
     <td>
     </td>
   </tr>
   <tr *ngFor="let c of matches">
+    <td>
+      {{c.local.name}}
+    </td>
+    <td>
+      {{c.visit.name}}
+    </td>
     <td>
       {{c.matchDate}}
     </td>
