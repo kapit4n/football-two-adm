@@ -20,7 +20,7 @@ export class MatchComponent implements OnInit {
     let id = this.route.snapshot.paramMap.get("id");
     if (id) {
       this.id = id;
-      this.matchesSvc.getById(id).subscribe(data => {
+      this.matchesSvc.getByIdIncl(id).subscribe(data => {
         this.data = data;
       })
     }
