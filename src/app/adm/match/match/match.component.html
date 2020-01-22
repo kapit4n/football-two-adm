@@ -25,23 +25,36 @@
         <div class="col-md-6">
           Time
           <div [style.display]="'flex'">
-            Hour: <input type="number" [value]="goalTime.hour" />
+            Hour: <input type="number" [(ngModel)]="goalTime.hour" />
           </div>
           <div [style.display]="'flex'">
-            Min: <input type="number" [value]="goalTime.min" />
+            Min: <input type="number" [(ngModel)]="goalTime.min" />
           </div>
           <div [style.display]="'flex'">
-            Seg: <input type="number" [value]="goalTime.seg" />
+            Seg: <input type="number" [(ngModel)]="goalTime.seg" />
           </div>
         </div>
         <div class="col-md-6">
-          <span i18n class="bold">Goal</span>
-          <select>
-            <option>Luis Arce</option>
-            <option>Samantha Arce</option>
-          </select>
+          <div [style.width]="'100%'">
+            <span i18n class="bold">Player</span>
+            <select>
+              <option>Luis Arce</option>
+              <option>Samantha Arce</option>
+            </select>
+
+          </div>
+          <div [style.width]="'100%'">
+            <span i18n class="bold">Goal</span>
+            <select>
+              <option>Atletico Madrid</option>
+              <option>Liverpool</option>
+            </select>
+          </div>
+
         </div>
+
       </div>
+
     </div>
   </div>
   <div class="modal-footer">

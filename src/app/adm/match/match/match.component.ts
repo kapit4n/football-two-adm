@@ -53,7 +53,14 @@ export class MatchComponent implements OnInit {
   }
 
   registerGoal() {
-
+    console.log(this.goalTime);
+    let goalInfo = {
+      "goalTime": 1000,
+      "description": "From corner",
+      "matchId": "5e27b68a66a0291e78d77ad9",
+      "playerId": "5e27b56a66a0291e78d77ad3",
+      "teamId": "5e27b53366a0291e78d77ad2"
+    };
   }
 
 }
