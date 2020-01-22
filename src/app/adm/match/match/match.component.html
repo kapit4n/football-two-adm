@@ -1,8 +1,51 @@
 <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">{{data.matchDate}}</h5>
-      <a href="match/{{id}}" class="btn btn-primary">Edit</a>
-      <div>Local Team: {{data.local.name}}</div>
-      <div>Visit Team: {{data.visit.name}}</div>
+  <div class="card-body">
+    <h5 class="card-title">{{data.matchDate}}</h5>
+    <a href="match/{{id}}" class="btn btn-primary">Edit</a>
+    <div>Local Team: {{data.local.name}}</div>
+    <div>Visit Team: {{data.visit.name}}</div>
+  </div>
+  <div>
+    <button class="btn btn-primary" (click)="openGoalRegister(goalAssigner)">Register Goal</button>
+  </div>
+</div>
+
+<ng-template #goalAssigner let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">
+      <ng-container i18n>Register a Goal</ng-container> {{data.name}}
+    </h4>
+    <button type="button" class="close" i18n-aria-label aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          Time
+          <div [style.display]="'flex'">
+            Hour: <input type="number" [value]="goalTime.hour" />
+          </div>
+          <div [style.display]="'flex'">
+            Min: <input type="number" [value]="goalTime.min" />
+          </div>
+          <div [style.display]="'flex'">
+            Seg: <input type="number" [value]="goalTime.seg" />
+          </div>
+        </div>
+        <div class="col-md-6">
+          <span i18n class="bold">Goal</span>
+          <select>
+            <option>Luis Arce</option>
+            <option>Samantha Arce</option>
+          </select>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="modal-footer">
+    <button i18n type="button" class="btn btn-outline-dark" (click)="registerGoal()">Save</button>
+    <button i18n type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>

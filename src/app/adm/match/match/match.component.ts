@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from "@angular/router";
 import { MatchesService } from '../../../services/adm/matches.service'
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-match',
@@ -12,7 +13,10 @@ export class MatchComponent implements OnInit {
 
   id: string;
   data: any;
-  constructor(private matchesSvc: MatchesService, private route: ActivatedRoute, private router: Router) {
+  closeResult: string;
+  goalTime = { hour: 0, min: 0, seg: 0 };
+
+  constructor(private matchesSvc: MatchesService, private modalService: NgbModal, private route: ActivatedRoute, private router: Router) {
     this.data = {};
   }
 
@@ -25,4 +29,31 @@ export class MatchComponent implements OnInit {
       })
     }
   }
+
+  openGoalRegister(goalRegister) {
+    this.modalService.open(goalRegister, { size: 'lg' }).result.then(
+      result => {
+        this.closeResult = `Closed with: ${result}`;
+      },
+      reason => {
+        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    );
+  }
+
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return "by pressing ESC";
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return "by clicking on a backdrop";
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  registerGoal() {
+
+  }
+
 }
