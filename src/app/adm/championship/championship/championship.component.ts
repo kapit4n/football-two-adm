@@ -19,6 +19,7 @@ export class ChampionshipComponent implements OnInit {
       banner: new FormControl(''),
       startDate: new FormControl(''),
       endDate: new FormControl(''),
+      stage: new FormControl(''),
       description: new FormControl('')
     });
   }
@@ -30,7 +31,7 @@ export class ChampionshipComponent implements OnInit {
     if (id != 'new') {
       this.id = id;
       this.champSvc.getById(id).subscribe(data => {
-        this.cForm.setValue({ name: data.name, description: data.description, startDate: moment(data.startDate).format('YYYY-MM-DD'), endDate: moment(data.endDate).format('YYYY-MM-DD'), banner: data.banner });
+        this.cForm.setValue({ name: data.name, stage: data.stage || "All and All", description: data.description, startDate: moment(data.startDate).format('YYYY-MM-DD'), endDate: moment(data.endDate).format('YYYY-MM-DD'), banner: data.banner });
       })
     }
   }

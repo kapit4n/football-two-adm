@@ -1,27 +1,29 @@
 <div class="card">
   <img class="card-img-top" src="{{data.banner}}" alt="Card image cap">
   <div class="card-body">
+    <a href="championship/{{id}}" class="btn btn-primary">Edit</a>
     <h5 class="card-title">{{data.name}}</h5>
     <div>
       <span>{{startDateLabel}}: {{moment(data.startDate).fromNow()}}</span>,
       <span>{{endDateLabel}}: {{moment(data.endDate).fromNow()}}</span>
     </div>
+    <div>Stage: <span>{{data.stage}}</span></div>
     <p class="card-text">{{data.description}}</p>
-    <a href="championship/{{id}}" class="btn btn-primary">Edit</a>
+    <h2>Teams</h2>
+    <button class="btn btn-primary" (click)="open(content)">+</button>
     <table class="table">
-      <caption>Teams <button class="btn btn-primary" (click)="open(content)">Add</button></caption>
       <tr>
         <th>
           Name
         </th>
-        <th>.</th>
+        <th></th>
       </tr>
       <tr *ngFor="let cTeam of chamTeams">
         <td>
           {{cTeam.team.name}}
         </td>
         <td>
-          <button (click)="removeTeam(cTeam.id)">X</button>
+          <button class="btn btn-primary" (click)="removeTeam(cTeam.id)">X</button>
         </td>
       </tr>
     </table>

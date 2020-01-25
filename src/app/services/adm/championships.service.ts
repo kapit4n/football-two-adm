@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from './config.service'
 import 'rxjs'; //get everything from Rx    
-import { Observable, Subject, of, config } from 'rxjs';
-import { map, filter, switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 import { CrudService } from './crud.service';
 
