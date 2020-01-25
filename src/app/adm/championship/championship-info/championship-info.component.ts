@@ -19,10 +19,12 @@ export class ChampionshipInfoComponent implements OnInit {
   moment = moment;
   closeResult: string;
   availableTeams: Array<any>;
+  chamTeams: Array<any>;
 
   constructor(private champSvc: ChampionshipsService, private route: ActivatedRoute,
     private router: Router, private modalService: NgbModal, private teamsSvc: TeamsService, ) {
     this.data = {};
+    this.chamTeams = [];
   }
 
   ngOnInit() {
@@ -43,6 +45,11 @@ export class ChampionshipInfoComponent implements OnInit {
           this.endDateLabel = "Ended";
         }
 
+      })
+
+      this.champSvc.getChamTeams(this.id).subscribe(chamTeams => {
+        this.chamTeams = chamTeams;
+        console.log(this.chamTeams);
       })
 
       this.teamsSvc.getAll().subscribe(data => this.availableTeams = data);
@@ -70,18 +77,21 @@ export class ChampionshipInfoComponent implements OnInit {
     }
   }
 
-  private addTeam(team: any) {
-    
+  public addTeam(team: any) {
     console.log(this.data);
-    let data = {teamId: team.id, championshipId: this.id};
+    let data = { teamId: team.id, championshipId: this.id };
+    if (!this.data.teams) {
+      this.data.teams = [];
+    }
+    this.data.teams.push(team);
     this.champSvc.addTeam(data).subscribe(dataSvd => {
       console.log(dataSvd);
       console.log("Saved team");
     });
   }
 
-  private removeTeam(team: any) {
-
+  private removeTeam((ctId: any) {
+    console.log(ctId);
   }
 
 }

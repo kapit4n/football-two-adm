@@ -14,10 +14,14 @@
         <th>
           Name
         </th>
+        <th>.</th>
       </tr>
-      <tr>
+      <tr *ngFor="let cTeam of chamTeams">
         <td>
-          
+          {{cTeam.team.name}}
+        </td>
+        <td>
+          <button (click)="removeTeam(cTeam.id)"></button>
         </td>
       </tr>
     </table>
@@ -26,7 +30,9 @@
 
 <ng-template #content let-c="close" let-d="dismiss">
   <div class="modal-header">
-    <h4 class="modal-title"><ng-container i18n>Assign team to</ng-container> {{data.name}}</h4>
+    <h4 class="modal-title">
+      <ng-container i18n>Assign team to</ng-container> {{data.name}}
+    </h4>
     <button type="button" class="close" i18n-aria-label aria-label="Close" (click)="d('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -48,11 +54,12 @@
         <div class="col-md-6">
           <span i18n class="bold">Assigned Teams</span>
           <ul class="list-group list-group-flush more-space">
-            <li class="list-group-item" *ngFor="let team of data.teams">
-              <button type="button" class="btn btn-outline-primary btn-sm pull-left" (click)="removeTeam(team.id)">
+            <li class="list-group-item" *ngFor="let cTeam of chamTeams">
+              <button type="button" class="btn btn-outline-primary btn-sm pull-left"
+                (click)="removeTeam(cTeam.team.id)">
                 <span class="fa fa-arrow-left" aria-hidden="true"></span>
               </button> &nbsp; &nbsp;
-              {{team.name}}
+              {{cTeam.team.name}}
             </li>
           </ul>
         </div>
