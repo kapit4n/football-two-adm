@@ -35,4 +35,16 @@ export class ChampionshipsService extends CrudService {
         })
       );
   }
+
+
+  removeTeam(id: string): Observable<any> {
+    return this.http
+      .delete(`${this.chamTeamUrl}/${id}`)
+      .pipe(
+        map((response: Response) => {
+          return <any>response;
+        })
+      );
+  }
+
 }

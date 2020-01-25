@@ -47,13 +47,15 @@ export class ChampionshipInfoComponent implements OnInit {
 
       })
 
-      this.champSvc.getChamTeams(this.id).subscribe(chamTeams => {
-        this.chamTeams = chamTeams;
-        console.log(this.chamTeams);
-      })
-
+      this.loadTeam();
       this.teamsSvc.getAll().subscribe(data => this.availableTeams = data);
     }
+  }
+
+  loadTeam() {
+    this.champSvc.getChamTeams(this.id).subscribe(chamTeams => {
+      this.chamTeams = chamTeams;
+    })
   }
 
   open(content) {
@@ -78,20 +80,20 @@ export class ChampionshipInfoComponent implements OnInit {
   }
 
   public addTeam(team: any) {
-    console.log(this.data);
     let data = { teamId: team.id, championshipId: this.id };
     if (!this.data.teams) {
       this.data.teams = [];
     }
     this.data.teams.push(team);
     this.champSvc.addTeam(data).subscribe(dataSvd => {
-      console.log(dataSvd);
-      console.log("Saved team");
+      this.loadTeam();
     });
   }
 
-  private removeTeam((ctId: any) {
-    console.log(ctId);
+  private removeTeam(ctId: any) {
+    this.champSvc.removeTeam(ctId).subscribe(x => {
+      this.loadTeam();
+    })
   }
 
 }
