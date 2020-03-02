@@ -118,5 +118,8 @@
       }
     }
   },
-  "defaultProject": "football-two-adm"
+  "defaultProject": "football-two-adm",
+  "cli": {
+    "analytics": "dbafc6e3-0440-4744-add1-743f00d7f3d4"
+  }
 }
